@@ -28,6 +28,7 @@ urlpatterns = [
     path("dj-rest-auth/", include("dj_rest_auth.urls")),
     path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/", include("todo.urls")),
     path(
         "api/schema/redoc",
         SpectacularRedocView.as_view(url_name="schema"),
@@ -40,7 +41,7 @@ urlpatterns = [
     ),
 ]
 
-#if settings.DEBUG:
+# if settings.DEBUG:
 #    import debug_toolbar
 
 #    urlpatterns = [

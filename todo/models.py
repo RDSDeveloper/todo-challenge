@@ -1,17 +1,19 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
 
+
 class Todo(models.Model):
     PRIORITY_CHOICES = [
-        ('H', 'High'),
-        ('M', 'Medium'),
-        ('L', 'Low'),
+        ("H", "High"),
+        ("M", "Medium"),
+        ("L", "Low"),
     ]
 
     title = models.CharField(max_length=200)
@@ -20,7 +22,7 @@ class Todo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     due_date = models.DateTimeField(null=True, blank=True)
-    priority = models.CharField(max_length=1, choices=PRIORITY_CHOICES, default='M')
+    priority = models.CharField(max_length=1, choices=PRIORITY_CHOICES, default="M")
     tags = models.ManyToManyField(Tag, blank=True)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 

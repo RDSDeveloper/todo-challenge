@@ -1,10 +1,3 @@
-kami-super-user
-kami-testpass123
-
-testuser
-testuser@email.com
-testpass123
-
 # To-Do List API
 
 This project is a RESTful API built with Django and Django REST Framework. It allows users to manage their to-do items, including creating, updating, and deleting tasks. Each task can have a title, description, completion status, creation and update timestamps, due date, priority, and associated tags. The API also supports user management, with each user having their own set of tasks and tags.

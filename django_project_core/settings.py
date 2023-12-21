@@ -62,6 +62,7 @@ THIRD_PARTY_APPS = [
     "drf_spectacular",
     "debug_toolbar",
     "corsheaders",
+    "django_filters",
 ]
 
 LOCAL_APPS = [

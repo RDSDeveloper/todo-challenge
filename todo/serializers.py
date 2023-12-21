@@ -8,8 +8,16 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ["id", "name"]
 
 
+class TagField(serializers.RelatedField):
+    def to_representation(self, value):
+        return value.name
+
+    def to_internal_value(self, data):
+        return Tag.objects.get(name=data)
+
+
 class TodoSerializer(serializers.ModelSerializer):
-    tags = TagSerializer(many=True, read_only=True)
+    tags = TagField(many=True, queryset=Tag.objects.all())
     user = serializers.ReadOnlyField(source="user.username")
 
     class Meta:

@@ -9,12 +9,13 @@ class TodoModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
-        Tag.objects.create(name="tag1")
+        tag1 = Tag.objects.create(name="tag1")
         Tag.objects.create(name="tag2")
         CustomUser = get_user_model()
         CustomUser.objects.create_user(username="testuser", password="12345")
         testuser = CustomUser.objects.get(id=1)
-        Todo.objects.create(title="Test Todo", user=testuser)
+        todo = Todo.objects.create(title="Test Todo", user=testuser)
+        todo.tags.add(tag1)
 
     def test_title_content(self):
         todo = Todo.objects.get(id=1)
@@ -47,8 +48,8 @@ class TodoModelTest(TestCase):
                 "updated_at": todo.updated_at.isoformat().replace("+00:00", "Z"),
                 "due_date": None,
                 "priority": "M",
-                "tags": [],
-                "user": 1,
+                "tags": ["tag1"],
+                "user": "testuser",
             },
         )
 

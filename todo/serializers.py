@@ -10,6 +10,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 class TodoSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
+    user = serializers.ReadOnlyField(source="user.username")
 
     class Meta:
         model = Todo

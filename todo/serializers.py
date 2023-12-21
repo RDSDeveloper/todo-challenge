@@ -3,9 +3,11 @@ from .models import Todo, Tag
 
 
 class TagSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source="user.username")
+
     class Meta:
         model = Tag
-        fields = ["id", "name"]
+        fields = ["id", "name", "user"]
 
 
 class TagField(serializers.RelatedField):

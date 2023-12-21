@@ -9,11 +9,10 @@ class TodoModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
-        tag1 = Tag.objects.create(name="tag1")
-        Tag.objects.create(name="tag2")
         CustomUser = get_user_model()
-        CustomUser.objects.create_user(username="testuser", password="12345")
-        testuser = CustomUser.objects.get(id=1)
+        testuser = CustomUser.objects.create_user(username="testuser", password="12345")
+        tag1 = Tag.objects.create(name="tag1", user=testuser)
+        Tag.objects.create(name="tag2", user=testuser)
         todo = Todo.objects.create(title="Test Todo", user=testuser)
         todo.tags.add(tag1)
 
@@ -61,5 +60,6 @@ class TodoModelTest(TestCase):
             {
                 "id": 1,
                 "name": "tag1",
+                "user": "testuser",
             },
         )

@@ -10,7 +10,7 @@ You will need to have Python 3.10 or higher and Docker installed. You will also 
 
 1. Clone the repository:
     ```
-    git clone https://github.com/YourUsername/todo-list-api.git
+    git clone https://github.com/RDSDeveloper/todo-challenge
     ```
 2. Navigate into the directory:
     ```

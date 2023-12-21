@@ -52,6 +52,8 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+django.log
+logs/
 
 to-do.txt
 

@@ -1,5 +1,8 @@
+import logging
 from django.db import models
 from django.contrib.auth import get_user_model
+
+logger = logging.getLogger(__name__)
 
 
 class Tag(models.Model):
@@ -8,6 +11,14 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        logger.info(f"Saving tag {self.name}")
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        logger.info(f"Deleting tag {self.name}")
+        super().delete(*args, **kwargs)
 
 
 class Todo(models.Model):
@@ -31,3 +42,11 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        logger.info(f"Saving todo {self.title}")
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        logger.info(f"Deleting todo {self.title}")
+        super().delete(*args, **kwargs)
